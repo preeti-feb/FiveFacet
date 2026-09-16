@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TraitLens — Big Five Personality Assessment</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>TraitLens</h1>
+    </header>
+
+    <section id="intro-screen">
+        <h2>A closer look at who you are</h2>
+        <p>Answer 30 short statements about yourself to get a clear picture of your personality across five key traits.
+            Based on the scientifically grounded Big Five framework, this takes just a few minutes and gives you an
+            honest, structured look at how you think and behave.</p>
+        <button id="start-btn" type="button">Start Assessment</button>
+    </section>
+
+    <section id="question-screen">
+        <p id="progress">Question 1 of 30</p>
+        <h2 id="question-text">Sample statement text goes here</h2>
+        <form id="response-form">
+            <fieldset>
+                <legend>Rate your agreement</legend>
+                <input type="radio" id="opt1" name="response" value="1">
+                <label for="opt1">Strongly Disagree</label>
+                <input type="radio" id="opt2" name="response" value="2">
+                <label for="opt2">Disagree</label>
+                <input type="radio" id="opt3" name="response" value="3">
+                <label for="opt3">Neutral</label>
+                <input type="radio" id="opt4" name="response" value="4">
+                <label for="opt4">Agree</label>
+                <input type="radio" id="opt5" name="response" value="5">
+                <label for="opt5">Strongly Agree</label>
+                <button id="next-btn" type="button">Next</button>
+            </fieldset>
+        </form>
+    </section>
+
+    <section id="results-screen">
+        <h2>Your Results</h2>
+        <div id="chart-container"></div>
+        <div id="trait-descriptions"></div>
+        <button id="retake-btn" type="button">Retake Assessment</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
