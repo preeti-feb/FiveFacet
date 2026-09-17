@@ -1,0 +1,50 @@
+:root {
+  --bg-color: #121212;
+  --text-color: #EAEAEA;
+  --accent-color: #7C3AED;
+  --card-bg: #1E1E1E;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  padding: 40px 20px 20px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent-color), #A78BFA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+#intro-screen {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 40px;
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  text-align: center;
+}
+
+#intro-screen h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+#intro-screen p {
+  color: #B0B0B0;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
