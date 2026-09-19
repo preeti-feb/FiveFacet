@@ -1,0 +1,235 @@
+:root {
+  --bg-color: #121212;
+  --text-color: #EAEAEA;
+  --accent-color: #7C3AED;
+  --card-bg: #1E1E1E;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  padding: 40px 20px 20px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent-color), #A78BFA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+#intro-screen {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 40px;
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  text-align: center;
+}
+
+#intro-screen h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+#intro-screen p {
+  color: #B0B0B0;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+#start-btn {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#start-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+}
+
+#question-screen,
+#results-screen {
+  display: none;
+}
+
+#question-screen {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 40px;
+  background-color: var(--card-bg);
+  border-radius: 16px;
+}
+
+#progress {
+  color: #B0B0B0;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+#question-text {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 28px;
+  line-height: 1.4;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+fieldset::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+#response-form input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+#response-form label {
+  display: block;
+  padding: 14px 20px;
+  margin-bottom: 10px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+}
+
+#response-form label:hover {
+  border-color: var(--accent-color);
+}
+
+#response-form input[type="radio"]:checked + label {
+  border-color: var(--accent-color);
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: 600;
+}
+
+#next-btn {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  float: right;
+}
+
+#next-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+}
+
+#back-btn {
+  background: transparent;
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-right: 12px;
+}
+
+#results-screen {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 40px;
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  text-align: center;
+}
+
+.score-display {
+  margin-bottom: 32px;
+}
+
+.score-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.bar-track {
+  width: 100%;
+  height: 16px;
+  background-color: #333;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent-color), #A78BFA);
+  border-radius: 8px;
+  transition: width 1.5s ease-out;
+}
+
+#trait-descriptions {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+#retake-btn {
+  background: transparent;
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+#retake-btn:hover {
+  background-color: var(--accent-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+}
