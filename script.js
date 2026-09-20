@@ -30,3 +30,97 @@ const questions = [
   { id: 29, text: "I actively look for ways to mix up my regular routine.", reverse: false },
   { id: 30, text: "Sticking to a fixed plan feels more comfortable to me than improvising.", reverse: true }
 ];
+
+let currentQuestion = 0;
+const answers = [];
+
+document.getElementById("start-btn").addEventListener("click", function() {
+  document.getElementById("intro-screen").style.display = "none";
+  document.getElementById("question-screen").style.display = "block";
+  document.getElementById("question-text").textContent = questions[0].text;
+  document.getElementById("progress").textContent = "Question 1 of 30";
+});
+
+document.getElementById("next-btn").addEventListener("click", function() {
+  const selected = document.querySelector('input[name="response"]:checked');
+  const selectedValue = selected.value;
+  answers[currentQuestion] = Number(selectedValue);
+  currentQuestion++;
+
+  if (currentQuestion === questions.length) {
+    document.getElementById("question-screen").style.display = "none";
+    document.getElementById("results-screen").style.display = "block";
+
+    let score = calculateScore();
+    let result = getBand(score);
+    document.getElementById("trait-descriptions").innerHTML =
+      "<h3>" + result.label + "</h3><p>" + result.text + "</p>";
+
+    document.getElementById("bar-fill").style.width = (score / 5 * 100) + "%";
+    document.getElementById("score-number").textContent = score.toFixed(1);
+  } else {
+    document.getElementById("question-text").textContent = questions[currentQuestion].text;
+    document.getElementById("progress").textContent = "Question " + (currentQuestion + 1) + " of 30";
+    document.getElementById("response-form").reset();
+  }
+});
+
+document.getElementById("back-btn").addEventListener("click", function() {
+  if (currentQuestion > 0) {
+    currentQuestion--;
+
+    document.getElementById("question-text").textContent = questions[currentQuestion].text;
+    document.getElementById("progress").textContent = "Question " + (currentQuestion + 1) + " of 30";
+
+    let previousAnswer = answers[currentQuestion];
+    document.querySelector('input[name="response"][value="' + previousAnswer + '"]').checked = true;
+  }
+});
+
+document.getElementById("retake-btn").addEventListener("click", function() {
+  currentQuestion = 0;
+  answers.length = 0;
+
+  document.getElementById("results-screen").style.display = "none";
+  document.getElementById("intro-screen").style.display = "block";
+  document.getElementById("trait-descriptions").innerHTML = "";
+
+  document.getElementById("bar-fill").style.width = "0%";
+  document.getElementById("score-number").textContent = "0.0";
+});
+
+const resultBands = {
+  overall: [
+    { max: 1.9, label: "The Traditionalist", text: "You gravitate toward the familiar, concrete, and proven. You feel most comfortable with routine, established norms, and practical thinking rather than abstract exploration." },
+    { max: 2.9, label: "The Grounded Realist", text: "You're generally practical and steady, with occasional openness to new ideas or experiences when they feel worthwhile." },
+    { max: 3.4, label: "The Balanced Thinker", text: "You move comfortably between structure and exploration — open to new ideas and experiences without needing constant novelty." },
+    { max: 4.2, label: "The Explorer", text: "You're genuinely drawn to new ideas, experiences, and creative expression. Curiosity and imagination play an active role in how you engage with the world." },
+    { max: 5.0, label: "The Visionary", text: "Openness defines much of your personality. You're imaginative, intellectually curious, aesthetically sensitive, adventurous, and drawn to the unconventional — often all at once." }
+  ]
+};
+
+function calculateScore() {
+  let total = 0;
+
+  for (let i = 0; i < answers.length; i++) {
+    let value = answers[i];
+
+    if (questions[i].reverse) {
+      value = 6 - value;
+    }
+
+    total = total + value;
+  }
+
+  let average = total / answers.length;
+  return average;
+}
+
+function getBand(score) {
+  for (let i = 0; i < resultBands.overall.length; i++) {
+    let band = resultBands.overall[i];
+    if (band.max >= score) {
+      return band;
+    }
+  }
+}
